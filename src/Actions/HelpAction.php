@@ -31,14 +31,7 @@ class HelpAction extends Action
             ->when(
                 KnowledgeBase::companion()->hasModalPreviews(),
                 fn (HelpAction $action) => $action
-                    ->modal()
-                    ->modalContent(new HtmlString('test'))
-                    ->action(fn () => dd('test'))
-//                    ->alpineClickHandler('$dispatch(\"open-modal\", {id: "' . $documentable->getId() . '"})')
-                    ->when(
-                        KnowledgeBase::companion()->hasSlideOverPreviews(),
-                        fn (HelpAction $action) => $action->slideOver()
-                    ),
+                    ->alpineClickHandler('$dispatch(\"open-modal\", {id: "' . $documentable->getId() . '"})'),
                 fn (HelpAction $action) => $action->url($documentable->getUrl())
             )
         ;
