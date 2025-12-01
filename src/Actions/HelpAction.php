@@ -31,7 +31,7 @@ class HelpAction extends Action
             ->when(
                 KnowledgeBase::companion()->hasModalPreviews(),
                 fn (HelpAction $action) => $action
-                    ->alpineClickHandler('$dispatch(\"open-modal\", {id: "' . $documentable->getId() . '"})'),
+                    ->alpineClickHandler('$dispatch("open-modal", {id: "' . $documentable->getId() . '"})'),
                 fn (HelpAction $action) => $action->url($documentable->getUrl())
             )
         ;
